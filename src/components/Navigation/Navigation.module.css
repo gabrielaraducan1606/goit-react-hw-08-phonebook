@@ -1,0 +1,26 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    padding: 0.5rem 1rem;
+  }
+  
+  .navList {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navLink {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .navLink.active {
+    font-weight: bold;
+    border-bottom: 2px solid #fff;
+  }
+  

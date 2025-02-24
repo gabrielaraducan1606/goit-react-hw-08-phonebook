@@ -6,25 +6,31 @@ import styles from './ContactList.module.css';
 
 function ContactList() {
   const dispatch = useDispatch();
-  const contacts = useSelector((state) => state.contacts.items || []); 
-  const filter = useSelector((state) => state.contacts.filter || ''); 
+  const contacts = useSelector((state) => state.contacts.items || []);
+  const filter = useSelector((state) => state.contacts.filter || '');
 
-  const filteredContacts = contacts.filter((contact) =>
+  const filteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
   return (
-    <ul className={styles.ul}>
-      {filteredContacts.map(({ id, name, number }) => (
-        <ContactItem
-          key={id}
-          id={id}
-          name={name}
-          number={number}
-          onDelete={() => dispatch(deleteContact(id))}
-        />
-      ))}
-    </ul>
+    <div className={styles.container}>
+      {filteredContacts.length === 0 ? (
+        <p>No contacts found.</p>
+      ) : (
+        <div className={styles.list}>
+          {filteredContacts.map(({ id, name, number }) => (
+            <ContactItem
+              key={id}
+              id={id}
+              name={name}
+              number={number}
+              onDelete={(id) => dispatch(deleteContact(id))}
+            />
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 

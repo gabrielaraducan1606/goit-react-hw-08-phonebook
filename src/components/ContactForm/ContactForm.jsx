@@ -40,4 +40,6 @@ function ContactForm() {
   );
 }
 
+ContactForm.propTypes = {};
+
 export default ContactForm;

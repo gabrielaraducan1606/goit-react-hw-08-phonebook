@@ -1,6 +1,35 @@
-.buttonDelete{
-    background-color: orangered;
-    color: black;
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .name {
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .number {
+    margin: 0;
+  }
+  
+  .deleteButton {
+    background-color: #e53e3e; /* roșu */
+    color: #fff;
     border: none;
-    margin-left: 10px;
-}
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .deleteButton:hover {
+    background-color: #c53030;
+  }
+  

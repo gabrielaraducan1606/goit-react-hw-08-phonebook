@@ -1,26 +1,39 @@
-import axios from "axios"; 
+// src/service/authService.js
+import axios from 'axios';
 
-axios.defaults.baseURl="http://localhost:3000";
+const BASE_URL = 'https://connections-api.goit.global';
 
-async function login(payload) {
-    const response=await axios.post('/login', payload);
-    console.log(response.data);
-    return response; 
-}
+const login = async (payload) => {
+  const response = await axios.post(`${BASE_URL}/users/login`, payload, {
+    headers: { "Content-Type": "application/json" },
+  });
+  return response;
+};
 
-async function register(payload) {
-    const response=await axios.post('/register', payload);
-    return response; 
-}
+const register = async (payload) => {
+  const response = await axios.post(`${BASE_URL}/users/signup`, payload, {
+    headers: { "Content-Type": "application/json" },
+  });
+  return response;
+};
 
-async function logout(payload) {
-    localStorage.removeItem('token');
-}
+const logout = async () => {
+  const response = await axios.post(`${BASE_URL}/users/logout`);
+  return response;
+};
 
-const authService={
-    login,
-    logout,
-    register,
+const getCurrentUser = async (token) => {
+  const response = await axios.get(`${BASE_URL}/users/current`, {
+    headers: { "Authorization": `Bearer ${token}` }
+  });
+  return response;
+};
+
+const authService = {
+  login,
+  register,
+  logout,
+  getCurrentUser,
 };
 
 export default authService;

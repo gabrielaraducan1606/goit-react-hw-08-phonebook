@@ -1,10 +1,10 @@
+// src/service/config.js
 import axios from 'axios';
 
-function setAxiosDefault(){
-const token = localStorage.storage.getItem('token');
+axios.defaults.baseURL = "http://localhost:3000"; // Dacă folosești un server local, altfel modifică după nevoie
 
-axios.defaults.baseURL="http://localhost:3000"
-axios.defaults.headers.common["Authorization"]= ${token};
-}
+const setAxiosDefault = (token) => {
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+};
 
 export default setAxiosDefault;

@@ -1,0 +1,16 @@
+.userMenu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #fff;
+  }
+  
+  .button {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  

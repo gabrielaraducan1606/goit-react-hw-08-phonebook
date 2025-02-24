@@ -1,22 +1,24 @@
-import React from "react";
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-import ContactForm from "./ContactForm/ContactForm";
-import Filter from "./Filter/Filter";
-import ContactList from "./ContactList/ContactList";
-import LoginPage from "./pages/LoginPage";
-import SideBar from "./sideBar/SideBar";
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Navigation from './Navigation/Navigation';
+import Register from './RegisterPage/RegisterPage';
+import Login from './Login/LoginPage';
+import Contacts from './Contacts/Contacts';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   return (
-    <BrowserRouter>
-    <SideBar />
-    <Routes>
-      <Route path="login" element={<LoginPage />}/>
-      <Route path="*" element={<ContactForm />}/>
-      <Route path="filter" element={<Filter />}/>
-      <Route path="*" element={<ContactList />}/>
+    <>
+      <Navigation />
+      <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/contacts" element={isAuthenticated ? <Contacts /> : <Navigate to="/login" />} />
+        <Route path="*" element={<Navigate to="/register" />} />
       </Routes>
-      </BrowserRouter>
+    </>
   );
 }
 
