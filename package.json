@@ -22,8 +22,7 @@
     "react-scripts": "5.0.1",
     "redux-persist": "^6.0.0",
     "start-auth": "json-server --watch -p40001 db.json -m ./node_modules/json-server-auth",
-    "web-vitals": "^2.1.3",
-    "proxy": "https://connections-api.goit.global"
+    "web-vitals": "^2.1.3"
   },
   "scripts": {
     "start": "react-scripts start",
