@@ -1,0 +1,2 @@
+:root{--primary-color:#08c;--primary-color-dark:#006ba1;--secondary-color:#47a9da;--background-color:#f5f5f5;--text-color:#333;--font-heading:"Arial, sans-serif";--font-body:"Roboto, sans-serif"}body{background-color:#f5f5f5;background-color:var(--background-color);color:#333;color:var(--text-color);font-family:"Roboto, sans-serif";font-family:var(--font-body);margin:0;padding:0}.container{margin:0 auto;max-width:1200px;padding:1rem}
+/*# sourceMappingURL=main.8269611e.css.map*/
