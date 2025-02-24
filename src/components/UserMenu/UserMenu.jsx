@@ -11,7 +11,7 @@ function UserMenu() {
 
   return (
     <Stack direction="row" spacing={2} alignItems="center">
-      <Typography variant="subtitle1" sx={{ fontWeight: 'bold', color: 'white' }}>{userEmail}</Typography>
+      <Typography variant="subtitle1" sx={{ color: 'white' }}>{userEmail}</Typography>
       <Button variant="outlined" color="error" size="small" onClick={() => dispatch(logout())} sx={{
             color: 'white',
           textTransform: 'none',
