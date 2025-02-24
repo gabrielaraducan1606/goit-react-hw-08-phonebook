@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../redux/authSlice';
 import { useNavigate } from 'react-router-dom';
-import styles from './LoginPage.module.css';
+import { Box, Typography, FormControl, FormLabel, Input, Button } from '@mui/material';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -25,38 +25,82 @@ function Login() {
   };
 
   return (
-    <div className={styles.loginContainer}>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <label className={styles.label}>
-          Email:
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className={styles.input}
-            required
-          />
-        </label>
-        <label className={styles.label}>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className={styles.input}
-            required
-          />
-        </label>
-        <button type="submit" className={styles.button}>
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: 'calc(100vh - 64px)', 
+        backgroundColor: 'background.default',
+        p: 2,
+      }}
+    >
+      <Box
+        sx={{
+          width: '100%',
+          maxWidth: 400,
+          p: 6,
+          border: '1px solid #ccc',
+          borderRadius: 2,
+          boxShadow: 2,
+          backgroundColor: 'white',
+        }}
+      >
+        <Typography variant="h4" textAlign="center" mb={4}>
           Login
-        </button>
-        {error && <p className={styles.error}>{error}</p>}
-      </form>
-    </div>
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit}>
+          <FormControl fullWidth margin="normal">
+            <FormLabel>Email</FormLabel>
+            <Input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter email"
+              required
+            />
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <FormLabel>Password</FormLabel>
+            <Input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter password"
+              required
+            />
+          </FormControl>
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            fullWidth
+            sx={{
+              textTransform: 'none',
+              borderRadius: '20px',
+              fontWeight: 'bold',
+              px: 3,
+              py: 1,
+              boxShadow: 2,
+              mt: 2,
+              '&:hover': {
+                backgroundColor: 'primary.dark',
+              },
+            }}
+          >
+            Login
+          </Button>
+          {error && (
+            <Typography color="error" mt={2}>
+              {typeof error === 'object'
+                ? error.message || JSON.stringify(error)
+                : error}
+            </Typography>
+          )}
+        </Box>
+      </Box>
+    </Box>
   );
 }
-
-Login.propTypes = {};
 
 export default Login;

@@ -1,33 +1,39 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import styles from './Navigation.module.css';
+import { AppBar, Toolbar, Button, Box } from '@mui/material';
 import UserMenu from '../UserMenu/UserMenu';
 
 function Navigation() {
+  const linkStyles = {
+    textTransform: 'none',
+    fontSize: '1rem',
+    color: 'inherit',
+    textDecoration: 'none',
+    marginRight: 2,
+    '&.active': {
+      fontWeight: 'bold',
+      borderBottom: '2px solid white'
+    }
+  };
+
   return (
-    <nav className={styles.nav}>
-      <ul className={styles.navList}>
-        <li>
-          <NavLink to="/register" className={styles.navLink}>
+    <AppBar position="static">
+      <Toolbar>
+        <Box sx={{ display: 'flex', flexGrow: 1 }}>
+          <Button component={NavLink} to="/register" sx={linkStyles}>
             Register
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/login" className={styles.navLink}>
+          </Button>
+          <Button component={NavLink} to="/login" sx={linkStyles}>
             Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/contacts" className={styles.navLink}>
+          </Button>
+          <Button component={NavLink} to="/contacts" sx={linkStyles}>
             Contacts
-          </NavLink>
-        </li>
-      </ul>
-      <UserMenu />
-    </nav>
+          </Button>
+        </Box>
+        <UserMenu />
+      </Toolbar>
+    </AppBar>
   );
 }
-
-Navigation.propTypes = {};
 
 export default Navigation;
