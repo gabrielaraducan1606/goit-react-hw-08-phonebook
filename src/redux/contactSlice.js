@@ -3,12 +3,10 @@ import axios from 'axios';
 
 const BASE_URL = 'https://connections-api.goit.global';
 
-// Helper: setează header-ul Authorization dacă există token
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-// Thunk pentru obținerea tuturor contactelor
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
@@ -27,7 +25,6 @@ export const fetchContacts = createAsyncThunk(
   }
 );
 
-// Thunk pentru adăugarea unui contact
 export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (contact, thunkAPI) => {
@@ -46,7 +43,6 @@ export const addContact = createAsyncThunk(
   }
 );
 
-// Thunk pentru ștergerea unui contact
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (contactId, thunkAPI) => {
@@ -65,7 +61,6 @@ export const deleteContact = createAsyncThunk(
   }
 );
 
-// Thunk pentru actualizarea unui contact
 export const updateContact = createAsyncThunk(
   'contacts/updateContact',
   async ({ contactId, contact }, thunkAPI) => {

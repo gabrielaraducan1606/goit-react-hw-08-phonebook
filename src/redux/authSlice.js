@@ -3,12 +3,10 @@ import axios from 'axios';
 
 const BASE_URL = 'https://connections-api.goit.global';
 
-// Thunk pentru înregistrare (signup)
 export const signupUser = createAsyncThunk(
   'auth/signup',
   async (credentials, thunkAPI) => {
     try {
-      // Așteaptă ca credentials să fie { name, email, password }
       const response = await axios.post(`${BASE_URL}/users/signup`, credentials);
       return response.data;
     } catch (error) {
@@ -18,12 +16,10 @@ export const signupUser = createAsyncThunk(
   }
 );
 
-// Thunk pentru login
 export const loginUser = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      // credentials: { email, password }
       const response = await axios.post(`${BASE_URL}/users/login`, credentials);
       return response.data;
     } catch (error) {

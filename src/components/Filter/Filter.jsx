@@ -22,7 +22,7 @@ function Filter() {
 }
 
 Filter.propTypes = {
-  // Dacă primește props externe, le definești aici
+
 };
 
 export default Filter;

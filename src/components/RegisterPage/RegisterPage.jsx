@@ -1,4 +1,3 @@
-// src/components/Register/Register.jsx
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signupUser } from '../../redux/authSlice';
@@ -6,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './RegisterPage.module.css';
 
 function Register() {
-  const [name, setName] = useState(''); // Adaugă state pentru nume
+  const [name, setName] = useState(''); 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
@@ -21,7 +20,6 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Trimite obiectul cu nume, email și parolă
     dispatch(signupUser({ name, email, password }));
     setName('');
     setEmail('');
