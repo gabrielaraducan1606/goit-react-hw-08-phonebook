@@ -11,7 +11,14 @@ export const signupUser = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.error('Signup error:', error.response.data);
-      return thunkAPI.rejectWithValue(error.response.data);
+      
+      if (error.response && error.response.status === 400) {
+        if (error.response.data.code === 11000) {
+          return thunkAPI.rejectWithValue('Acest email este deja folosit. Alege altul.');
+        }
+      }
+
+      return thunkAPI.rejectWithValue(error.response.data.message || 'A apărut o eroare la înregistrare.');
     }
   }
 );
